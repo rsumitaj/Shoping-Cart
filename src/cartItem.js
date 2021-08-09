@@ -18,9 +18,11 @@ class CartItem extends React.Component {
     // set state form -1 
     // this.setState({
     //   Qty:this.state.Qty+1
-    // });
+    // },(callback is executed whenever the state is finshed updating if we want to perform some action as state is asynchronus)=>{});
 
-    // set state foem -2 = if previous state required use this
+    // in case there is multiple this.state then in form -1 the last this.state will be executed but in form-2 all will be exexuted
+
+    // set state form -2 = if previous state required use this
     this.setState((prevState) => {
       return{
         Qty:prevState.Qty+1
@@ -28,7 +30,15 @@ class CartItem extends React.Component {
     });
   }
 
+  
+
   decreaseQuantity = () => {
+
+    const {Qty} = this.state ;
+    if(Qty === 0){
+      return;
+    }
+
     this.setState((prevState) => {
       return{
         Qty:prevState.Qty-1
