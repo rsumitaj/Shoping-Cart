@@ -12,21 +12,21 @@ class App extends React.Component {
           title:"Macbook Air 1",
           price:79999,
           Qty:5,
-          img:' ',
+          img:'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/macbook-air-space-gray-select-201810?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1603332211000',
           id:1
         },
         {
           title:"Apple Iphone",
           price:89999,
           Qty:2,
-          img:' ',
+          img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/refurb-iphone-xs-silver?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1579299535944',
           id:2
         },
         {
           title:"Apple Watch",
           price:19999,
           Qty:8,
-          img:' ',
+          img:'https://m.media-amazon.com/images/I/71fwbMm1NBL._AC_SL1500_.jpg',
           id:3
         }
       ]
@@ -81,6 +81,17 @@ class App extends React.Component {
     return count;
   }
 
+  getCartTotal = () =>{
+    const {products} =this.state
+
+    let cartTotal = 0;
+
+    products.map((product)=>{
+      cartTotal = cartTotal + product.Qty*product.price ;
+    });
+
+    return cartTotal ;
+  }
 
   render(){
     const {products}=this.state;
@@ -94,6 +105,10 @@ class App extends React.Component {
               onDecreaseQuantity = {this.handleDecreaseQuantity}  
               onDeleteProduct = {this.handleDeleteProduct}
         />
+
+        <div style={ {fontSize:20,padding:20} }>
+          TOTAL: Rs.{this.getCartTotal()}
+        </div>
       </div>
     );
   }
