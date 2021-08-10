@@ -1,44 +1,11 @@
 import React from 'react' ;
 
 class CartItem extends React.Component {
-
-  // arrow function automatically binds "" this """ 
-  increaseQuantity = () => {
-    // console.log("this.state",this.state);
-
-    // set state form -1 
-    // this.setState({
-    //   Qty:this.state.Qty+1
-    // },(callback is executed whenever the state is finshed updating if we want to perform some action as state is asynchronus)=>{});
-
-    // in case there is multiple this.state then in form -1 the last this.state will be executed but in form-2 all will be exexuted
-
-    // set state form -2 = if previous state required use this
-    this.setState((prevState) => {
-      return{
-        Qty:prevState.Qty+1
-      }
-    });
-  }
-
   
-
-  decreaseQuantity = () => {
-
-    const {Qty} = this.state ;
-    if(Qty === 0){
-      return;
-    }
-
-    this.setState((prevState) => {
-      return{
-        Qty:prevState.Qty-1
-      }
-    });
-  }
 
   render(){
     const {title,price,Qty}=this.props.product;
+    const {product,onIncreaseQuantity,onDecreaseQuantity} = this.props ;
     return (
       <div className="cart-item">
 
@@ -56,13 +23,13 @@ class CartItem extends React.Component {
               alt="increase" 
               className="action-icons" 
               src="https://image.flaticon.com/icons/png/512/1828/1828926.png" 
-              onClick={this.increaseQuantity}
+              onClick={() => onIncreaseQuantity(product)}
             />
             <img 
               alt="decrease" 
               className="action-icons" 
               src="https://image.flaticon.com/icons/png/512/992/992683.png" 
-              onClick={this.decreaseQuantity}
+              onClick={() => onDecreaseQuantity(product)}
             />
             <img 
               alt="delete" 
