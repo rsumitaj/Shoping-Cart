@@ -9,7 +9,7 @@ class App extends React.Component {
     this.state = {
       products:[
         {
-          title:"Macbook Air 1",
+          title:"Macbook Air M1",
           price:79999,
           Qty:5,
           img:'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/macbook-air-space-gray-select-201810?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1603332211000',
